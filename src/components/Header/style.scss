@@ -1,0 +1,35 @@
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dedede;
+}
+.main-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0;
+}
+
+// logo
+
+.logo {
+  width: 200px;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+// main navigation
+
+.main-nav {
+  ul {
+    display: flex;
+    gap: 16px;
+    .main-nav-list {
+      position: relative;
+      a {
+        color: black;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dedede;
+}
+
+.main-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0;
+}
+
+.logo {
+  width: 200px;
+}
+.logo img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 16px;
+}
+.main-nav ul .main-nav-list {
+  position: relative;
+}
+.main-nav ul .main-nav-list a {
+  color: black;
+}/*# sourceMappingURL=index.modul.css.map */
