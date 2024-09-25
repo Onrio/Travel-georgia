@@ -1,23 +1,24 @@
 import logo from "/src/assets/logo/logo.png";
-import "./style.css";
+import mainStyle from "../../style/index.module.css";
+import style from "./style.module.css";
 
-function Header() {
+const Header: React.FC = () => {
   return (
     <header>
-      <div className="container">
-        <div className="main-header-row">
-          <div className="logo">
+      <div className={mainStyle["container"]}>
+        <div className={style["main-header-row"]}>
+          <div className={style["logo"]}>
             <img src={logo} alt="Logo" />
           </div>
-          <nav className="main-nav">
+          <nav className={style["main-nav"]}>
             <ul>
-              <li className="main-nav-list">
+              <li className={style["main-nav-list"]}>
                 <a href="">Travel To</a>
               </li>
-              <li className="main-nav-list">
+              <li className={style["main-nav-list"]}>
                 <a href="">About UsM</a>
               </li>
-              <li className="main-nav-list">
+              <li className={style["main-nav-list"]}>
                 <a href="">Contact</a>
               </li>
             </ul>
@@ -26,6 +27,8 @@ function Header() {
       </div>
     </header>
   );
-}
+};
+
+Header.displayName = "Header Component";
 
 export default Header;

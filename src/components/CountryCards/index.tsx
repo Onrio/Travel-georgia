@@ -1,4 +1,8 @@
-import "./style.css";
+import style from "./style.module.css";
+import mainStyle from "../../style/index.module.css";
+import CardImage from "./CardChildComponents/CardImage";
+import CardTitle from "./CardChildComponents/CardTitle";
+import CardText from "./CardChildComponents/CardText";
 
 const country = [
   {
@@ -31,29 +35,32 @@ const country = [
   },
 ];
 
-function CountryCards() {
+const CountryCards: React.FC = () => {
   return (
-    <section className="container">
-      <h2 className="section-title">Discover Wine Destinations</h2>
-      <div className="country-card-row">
+    <section className={mainStyle["container"]}>
+      <h2 className={style["section-title"]}>Discover Wine Destinations</h2>
+      <div className={style["country-card-row"]}>
         {country.map((country) => (
-          <div key={country.name} className="country-card">
-            <img
-              src={`/src/assets/vineyards/${country.image}`}
-              alt={`vineyard in ${country.name}`}
+          <div key={country.name} className={style["country-card"]}>
+            <CardImage
+              image={`/src/assets/vineyards/${country.image}`}
+              altText={`vineyard in ${country.name}`}
             />
-            <div className="card-body">
-              <h3>{country.name}</h3>
-              <div className="info-row">
-                <span className="capital">{country.capital}</span>
-                <span>{country.population}M</span>
-              </div>
-              <p>{country.about}</p>
+            <div className={style["card-body"]}>
+              <CardTitle
+                name={country.name}
+                capital={country.capital}
+                population={country.population}
+              />
+              <CardText text={country.about} />
             </div>
           </div>
         ))}
       </div>
     </section>
   );
-}
+};
+
+CountryCards.displayName = "Country Card Component";
+
 export default CountryCards;

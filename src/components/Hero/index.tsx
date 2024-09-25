@@ -1,10 +1,10 @@
-import "./style.css";
+import style from "./style.module.css";
 
-function Hero() {
+const Hero: React.FC = () => {
   return (
-    <section className="hero-section">
-      <div className="hero-section-thickness">
-        <div className="hero-section-content">
+    <section className={style["hero-section"]}>
+      <div className={style["hero-section-thickness"]}>
+        <div className={style["hero-section-content"]}>
           <h1>Explore the World, One Glass at a Time</h1>
           <p>
             Embark on a journey through the world’s most exquisite vineyards,
@@ -17,5 +17,7 @@ function Hero() {
       </div>
     </section>
   );
-}
+};
+Hero.displayName = "Hero Component";
+
 export default Hero;
