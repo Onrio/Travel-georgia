@@ -1,17 +1,14 @@
 import style from "./style.module.css";
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ title: string; text: string }> = (props) => {
+  const { title } = props;
+  const { text } = props;
   return (
     <section className={style["hero-section"]}>
       <div className={style["hero-section-thickness"]}>
         <div className={style["hero-section-content"]}>
-          <h1>Explore the World, One Glass at a Time</h1>
-          <p>
-            Embark on a journey through the world’s most exquisite vineyards,
-            savoring unique wines and unforgettable experiences. Discover the
-            art, culture, and passion behind every bottle with our curated wine
-            tours.
-          </p>
+          <h1>{title}</h1>
+          <p>{text}</p>
           <button>Follow For More</button>
         </div>
       </div>

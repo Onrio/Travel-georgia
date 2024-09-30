@@ -1,5 +1,5 @@
-import logo from "/src/assets/logo/logo.png";
-import mainStyle from "../../style/index.module.css";
+import logo from "@/assets/logo/logo.png";
+import mainStyle from "@/style/index.module.css";
 import style from "./style.module.css";
 
 const Header: React.FC = () => {
