@@ -9,8 +9,6 @@ header {
   padding: 28px 0;
 }
 
-// logo
-
 .logo {
   width: 200px;
   img {
@@ -19,17 +17,16 @@ header {
   }
 }
 
-// main navigation
-
 .main-nav {
   ul {
     display: flex;
     gap: 16px;
-    .main-nav-list {
-      position: relative;
-      a {
-        color: black;
-      }
+    a {
+      color: black;
+    }
+    .active_nav_item {
+      color: black;
+      text-decoration: underline;
     }
   }
 }

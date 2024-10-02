@@ -1,4 +1,4 @@
-import style from "@/components/CountryCards/style.module.css";
+import style from "../style.module.css";
 
 interface CardProps {
   cardData: {

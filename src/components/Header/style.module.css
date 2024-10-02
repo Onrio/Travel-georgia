@@ -23,9 +23,10 @@ header {
   display: flex;
   gap: 16px;
 }
-.main-nav ul .main-nav-list {
-  position: relative;
-}
-.main-nav ul .main-nav-list a {
+.main-nav ul a {
   color: black;
+}
+.main-nav ul .active_nav_item {
+  color: black;
+  text-decoration: underline;
 }/*# sourceMappingURL=style.module.css.map */
