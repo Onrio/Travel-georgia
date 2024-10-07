@@ -28,7 +28,9 @@ const Header: React.FC = () => {
                 </NavLink>
               </li>
               <li className={style["nav_item"]}>
-                <a href="#">Contact</a>
+                <NavLink to="/contact" className={handleActiveNav}>
+                  Contact
+                </NavLink>
               </li>
             </ul>
           </nav>

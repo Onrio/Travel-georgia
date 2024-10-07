@@ -8,6 +8,7 @@ export const countries = [
                 winemaking methods, it offers a unique and unforgettable
                 experience.`,
     image: "vineyards-italy.jpg",
+    id: "1",
   },
   {
     name: "France",
@@ -17,6 +18,7 @@ export const countries = [
                 diverse regions, and world-class vineyards. From Bordeaux to Burgundy, 
                 it celebrates tradition, craftsmanship, and the art of winemaking.`,
     image: "vineyards-France.jpg",
+    id: "2",
   },
   {
     name: "Georgia",
@@ -26,8 +28,10 @@ export const countries = [
               with unique qvevri winemaking. Its rich culture blends ancient techniques, 
               diverse grape varieties, and vibrant wine festivals.`,
     image: "vineyards-georgia.jpg",
+    id: "3",
   },
 ];
+
 export const aboutUs = {
   title: "About Us",
   text: `At WineWander, our goal is to inspire and connect travelers with

@@ -1,9 +1,6 @@
-import { lazy } from "react";
 import "@/style/index.module.css";
-const Hero = lazy(() => import("@/pages/home/components/Hero/index"));
-const CountryCards = lazy(
-  () => import("@/pages/home/components/CountryCards/index")
-);
+import Hero from "@/pages/home/components/Hero/index";
+import CountryCards from "../../components/CountryCards";
 
 const article = {
   title: "Explore the World, One Glass at a Time",
