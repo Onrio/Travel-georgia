@@ -8,7 +8,6 @@ import { useState } from "react";
 const CountryCards: React.FC<{ title: string }> = (props) => {
   const { title } = props;
 
-
   const [countryData, setCountryData] = useState<
     {
       name: string;
@@ -21,10 +20,16 @@ const CountryCards: React.FC<{ title: string }> = (props) => {
     }[]
   >(countries);
 
-
   const handleSortByLikes = () => {
     const sortedCountries = [...countryData].sort((a, b) => b.like - a.like);
     setCountryData(sortedCountries);
+  };
+
+  const handleLikeClick = (id: string) => {
+    const updatedCountries = countryData.map((country) =>
+      country.id === id ? { ...country, like: country.like + 1 } : country
+    );
+    setCountryData(updatedCountries);
   };
 
   return (
@@ -35,7 +40,11 @@ const CountryCards: React.FC<{ title: string }> = (props) => {
       </div>
       <div className={style["country-card-row"]}>
         {countryData.map((country) => (
-          <Card key={country.id} cardData={country} />
+          <Card
+            key={country.id}
+            cardData={country}
+            handleLikeClick={() => handleLikeClick(country.id)}
+          />
         ))}
       </div>
     </section>
