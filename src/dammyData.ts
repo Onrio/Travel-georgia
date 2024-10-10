@@ -9,6 +9,7 @@ export const countries = [
                 experience.`,
     image: "vineyards-italy.jpg",
     id: "1",
+    like: 10,
   },
   {
     name: "France",
@@ -19,6 +20,7 @@ export const countries = [
                 it celebrates tradition, craftsmanship, and the art of winemaking.`,
     image: "vineyards-France.jpg",
     id: "2",
+    like: 16,
   },
   {
     name: "Georgia",
@@ -29,6 +31,7 @@ export const countries = [
               diverse grape varieties, and vibrant wine festivals.`,
     image: "vineyards-georgia.jpg",
     id: "3",
+    like: 90,
   },
 ];
 

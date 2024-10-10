@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import style from "../style.module.css";
+import like from "@/assets/like.png";
+import { useState } from "react";
 
 interface CardProps {
   cardData: {
@@ -9,10 +11,21 @@ interface CardProps {
     population: number;
     about: string;
     id: string;
+    like: number;
   };
 }
 
 const Card: React.FC<CardProps> = ({ cardData }) => {
+  
+  const [likeCount, setLikeCount] = useState(cardData.like);
+
+  function handleLikeClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setLikeCount(likeCount + 1);
+  }
+
   return (
     <Link to={`country-view/${cardData.id}`}>
       <div className={style["country-card"]} id={cardData.id}>
@@ -31,6 +44,12 @@ const Card: React.FC<CardProps> = ({ cardData }) => {
             </div>
           </div>
           <p>{cardData.about}</p>
+          <div className={style["like-row"]}>
+            <button onClick={handleLikeClick}>
+              <img src={like} alt="" />
+              <span>{likeCount}</span>
+            </button>
+          </div>
         </div>
       </div>
     </Link>

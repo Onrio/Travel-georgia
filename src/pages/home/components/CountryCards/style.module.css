@@ -1,3 +1,8 @@
+.country-card-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
 .country-card-row ul {
   display: flex;
   padding: 24px 0;
@@ -6,6 +11,12 @@
 .country-card-row ul li {
   display: flex;
   padding: 0 8px;
+}
+
+.country-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .country-card {
@@ -50,4 +61,30 @@
 }
 .info-row .capital {
   font-weight: 500;
+}
+
+.like-row {
+  display: flex;
+  justify-content: flex-end;
+}
+.like-row button {
+  width: 40px;
+  height: 20px;
+  padding: 0;
+  border-radius: 30px;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(134, 134, 134, 0.596);
+  font-size: 14px;
+}
+.like-row button:focus {
+  outline: none;
+}
+.like-row button img {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=style.module.css.map */

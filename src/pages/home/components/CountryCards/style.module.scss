@@ -1,4 +1,7 @@
 .country-card-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
   ul {
     display: flex;
     padding: 24px 0;
@@ -8,6 +11,11 @@
       padding: 0 8px;
     }
   }
+}
+.country-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .country-card {
   flex: 1;
@@ -47,5 +55,29 @@
   }
   .capital {
     font-weight: 500;
+  }
+}
+.like-row {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    width: 40px;
+    height: 20px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(134, 134, 134, 0.596);
+    font-size: 14px;
+    &:focus {
+      outline: none;
+    }
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
   }
 }
