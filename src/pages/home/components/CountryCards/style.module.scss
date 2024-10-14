@@ -16,6 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .country-sort {
+    display: flex;
+    gap: 8px;
+  }
 }
 .country-card {
   flex: 1;
@@ -25,6 +29,7 @@
   overflow: hidden;
   // box-shadow: 0 10px 30px -10px rgba(0, 10, 10, 0.15);
   border: 1px solid rgba(5, 7, 5, 0.075);
+  position: relative;
 }
 .card-image {
   display: flex;
@@ -59,8 +64,8 @@
 }
 .like-row {
   display: flex;
-  justify-content: flex-end;
-  button {
+  justify-content: space-between;
+  .like-button {
     width: 40px;
     height: 20px;
     padding: 0;
@@ -80,4 +85,42 @@
       object-fit: cover;
     }
   }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  width: 800px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  button {
+    color: black;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background-color: rgb(150, 150, 150);
+    span {
+      content: "\0058";
+    }
+  }
+}
+.deleted {
+  opacity: 0.5;
 }
