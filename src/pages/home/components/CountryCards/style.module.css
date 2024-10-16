@@ -1,7 +1,9 @@
+@charset "UTF-8";
 .country-card-row {
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
+  position: relative;
 }
 .country-card-row ul {
   display: flex;
@@ -106,6 +108,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .modal-content {
@@ -132,6 +135,42 @@
   content: "X";
 }
 
+.input-error {
+  font-size: 12px;
+  color: red;
+}
+
 .deleted {
   opacity: 0.5;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.151);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-button-prev span,
+.swiper-button-next span {
+  content: "➤";
+}
+
+.swiper-button-prev {
+  left: -48px;
+}
+.swiper-button-prev span {
+  rotate: 180deg;
+}
+
+.swiper-button-next {
+  right: -48px;
 }/*# sourceMappingURL=style.module.css.map */

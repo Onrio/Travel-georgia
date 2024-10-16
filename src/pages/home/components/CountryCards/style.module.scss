@@ -2,6 +2,7 @@
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
+  position: relative;
   ul {
     display: flex;
     padding: 24px 0;
@@ -98,6 +99,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 .modal-content {
   width: 800px;
@@ -121,6 +123,39 @@
     }
   }
 }
+.input-error {
+  font-size: 12px;
+  color: red;
+}
 .deleted {
   opacity: 0.5;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.151);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    content: "\27A4";
+  }
+}
+
+.swiper-button-prev {
+  left: -48px;
+  span {
+    rotate: 180deg;
+  }
+}
+
+.swiper-button-next {
+  right: -48px;
 }

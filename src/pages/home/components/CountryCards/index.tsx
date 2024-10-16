@@ -1,10 +1,14 @@
+import React, { useReducer, useState } from "react";
 import style from "./style.module.css";
 import mainStyle from "@/style/index.module.css";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
 import { countries } from "@/dammyData";
 import "react-multi-carousel/lib/styles.css";
-import { useReducer, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 type ActionType =
   | { type: "ADD_COUNTRY"; payload: Country }
@@ -65,11 +69,10 @@ const initialState: Country[] = countries.map((country, index) => ({
   originalIndex: index,
 }));
 
-const CountryCards: React.FC<{ title: string }> = (props) => {
-  const { title } = props;
-
+const CountryCards: React.FC<{ title: string }> = ({ title }) => {
   const [countryData, dispatch] = useReducer(countryReducer, initialState);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortByLikes, setSortByLikes] = useState<"asc" | "desc" | null>(null);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -79,18 +82,17 @@ const CountryCards: React.FC<{ title: string }> = (props) => {
     setIsModalOpen(false);
   };
 
-  const handleAddCountry = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const countryobj: any = {};
-    const formData = new FormData(event.currentTarget);
-    for (const [key, value] of formData) {
-      countryobj[key] = value;
-    }
-
+  const handleAddCountry = (
+    name: string,
+    capital: string,
+    population: number,
+    about: string
+  ) => {
     const newCountry: Country = {
-      ...countryobj,
+      name,
+      capital,
+      population,
+      about,
       image: "vineyards-italy.jpg",
       like: 0,
       id: (Number(countryData.at(-1)?.id) + 1).toString(),
@@ -102,47 +104,66 @@ const CountryCards: React.FC<{ title: string }> = (props) => {
     closeModal();
   };
 
-  const sortedCountries = [...countryData].sort((a, b) => {
-    if (a.isDeleted === b.isDeleted) {
+
+  const sortedCountries = [...countryData]
+    .sort((a, b) => {
+      if (sortByLikes) {
+        return sortByLikes === "asc" ? a.like - b.like : b.like - a.like;
+      }
       return a.originalIndex - b.originalIndex;
-    }
-    return a.isDeleted ? 1 : -1;
-  });
+    })
+    .sort((a, b) => {
+      return a.isDeleted === b.isDeleted ? 0 : a.isDeleted ? 1 : -1;
+    });
 
   return (
     <section className={mainStyle["container"]}>
       <div className={style["country-card-header"]}>
         <h2 className={mainStyle["section-title"]}>{title}</h2>
         <div className={style["country-sort"]}>
-          <button
-            onClick={() => dispatch({ type: "SORT_BY_LIKES", payload: "asc" })}
-          >
-            Asc
+          <button onClick={() => setSortByLikes("asc")}>
+            Sort by Likes (Asc)
           </button>
-          <button
-            onClick={() => dispatch({ type: "SORT_BY_LIKES", payload: "desc" })}
-          >
-            Desc
+          <button onClick={() => setSortByLikes("desc")}>
+            Sort by Likes (Desc)
           </button>
           <button onClick={openModal}>Add Country</button>
         </div>
       </div>
       <div className={style["country-card-row"]}>
-        {sortedCountries.map((country) => (
-          <Card
-            key={country.id}
-            cardData={country}
-            handleLikeClick={() =>
-              dispatch({ type: "LIKE_COUNTRY", payload: country.id })
-            }
-            handleDelete={() =>
-              dispatch({ type: "DELETE_COUNTRY", payload: country.id })
-            }
-            handleRestore={() =>
-              dispatch({ type: "RESTORE_COUNTRY", payload: country.id })
-            }
-          />
-        ))}
+        <Swiper
+          spaceBetween={8}
+          slidesPerView={3}
+          pagination={{ clickable: true }}
+          navigation={{
+            prevEl: `.${style["swiper-button-prev"]}`,
+            nextEl: `.${style["swiper-button-next"]}`,
+          }}
+          modules={[Navigation]}
+        >
+          {sortedCountries.map((country) => (
+            <SwiperSlide key={country.id}>
+              <Card
+                cardData={country}
+                handleLikeClick={() =>
+                  dispatch({ type: "LIKE_COUNTRY", payload: country.id })
+                }
+                handleDelete={() =>
+                  dispatch({ type: "DELETE_COUNTRY", payload: country.id })
+                }
+                handleRestore={() =>
+                  dispatch({ type: "RESTORE_COUNTRY", payload: country.id })
+                }
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className={style["swiper-button-prev"]}>
+          <span>&#10148;</span>
+        </div>
+        <div className={style["swiper-button-next"]}>
+          <span>&#10148;</span>
+        </div>
       </div>
 
       <Modal
