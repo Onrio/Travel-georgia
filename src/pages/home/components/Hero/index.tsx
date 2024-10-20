@@ -1,9 +1,10 @@
 import style from "./style.module.css";
 
-
 const Hero: React.FC<{ title: string; text: string }> = (props) => {
   const { title } = props;
   const { text } = props;
+
+
   return (
     <section className={style["hero-section"]}>
       <div className={style["hero-section-thickness"]}>

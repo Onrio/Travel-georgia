@@ -18,10 +18,10 @@ type ActionType =
   | { type: "SORT_BY_LIKES"; payload: "asc" | "desc" };
 
 type Country = {
-  name: string;
+  name: { en: string; ka: string };
   population: number;
-  capital: string;
-  about: string;
+  capital: { en: string; ka: string };
+  about: { en: string; ka: string };
   image: string;
   id: string;
   like: number;
@@ -89,10 +89,10 @@ const CountryCards: React.FC<{ title: string }> = ({ title }) => {
     about: string
   ) => {
     const newCountry: Country = {
-      name,
-      capital,
+      name: { en: name, ka: name },
+      capital: { en: capital, ka: capital },
       population,
-      about,
+      about: { en: about, ka: about },
       image: "vineyards-italy.jpg",
       like: 0,
       id: (Number(countryData.at(-1)?.id) + 1).toString(),
@@ -103,8 +103,6 @@ const CountryCards: React.FC<{ title: string }> = ({ title }) => {
     dispatch({ type: "ADD_COUNTRY", payload: newCountry });
     closeModal();
   };
-
-
   const sortedCountries = [...countryData]
     .sort((a, b) => {
       if (sortByLikes) {
@@ -121,12 +119,8 @@ const CountryCards: React.FC<{ title: string }> = ({ title }) => {
       <div className={style["country-card-header"]}>
         <h2 className={mainStyle["section-title"]}>{title}</h2>
         <div className={style["country-sort"]}>
-          <button onClick={() => setSortByLikes("asc")}>
-            Sort by Likes (Asc)
-          </button>
-          <button onClick={() => setSortByLikes("desc")}>
-            Sort by Likes (Desc)
-          </button>
+          <button onClick={() => setSortByLikes("asc")}>Asc</button>
+          <button onClick={() => setSortByLikes("desc")}>Desc</button>
           <button onClick={openModal}>Add Country</button>
         </div>
       </div>

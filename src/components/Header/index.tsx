@@ -1,10 +1,12 @@
 import logo from "@/assets/logo/logo.png";
 import mainStyle from "@/style/index.module.css";
 import style from "./style.module.css";
-
+import { translateHeader } from "@/dammyData";
 import { Link, NavLink, NavLinkRenderProps } from "react-router-dom";
+import { useLanguage } from "@/App";
 
 const Header: React.FC = () => {
+  const { language, switchLanguage } = useLanguage();
   const handleActiveNav = ({ isActive }: NavLinkRenderProps) =>
     isActive ? style["active_nav_item"] : style["nav_item"];
 
@@ -20,17 +22,25 @@ const Header: React.FC = () => {
           <nav className={style["main-nav"]}>
             <ul>
               <li className={style["nav_item"]}>
-                <a href="#">Travel To</a>
+                <a href="#">{translateHeader[language].travel}</a>
               </li>
               <li className={style["main-nav-list"]}>
                 <NavLink to="/about" className={handleActiveNav}>
-                  About Us
+                  {translateHeader[language].about}
                 </NavLink>
               </li>
               <li className={style["nav_item"]}>
                 <NavLink to="/contact" className={handleActiveNav}>
-                  Contact
+                  {translateHeader[language].contact}
                 </NavLink>
+              </li>
+              <li className={style["nav_item"]}>
+                <button
+                  className={style["change-lang"]}
+                  onClick={switchLanguage}
+                >
+                  {translateHeader[language].lang}
+                </button>
               </li>
             </ul>
           </nav>

@@ -3,6 +3,7 @@ import { countries } from "@/dammyData";
 import style from "./style.module.css";
 import mainStyle from "@/style/index.module.css";
 
+
 const CountryArticle = () => {
   const { id } = useParams();
 
