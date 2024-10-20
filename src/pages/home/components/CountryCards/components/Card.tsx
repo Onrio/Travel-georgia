@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import style from "../style.module.css";
 import like from "@/assets/like.png";
+import { useLanguage } from "@/App";
 
 interface CardProps {
   cardData: {
-    name: string;
+    name: { en: string; ka: string };
     image: string;
-    capital: string;
+    capital: { en: string; ka: string };
     population: number;
-    about: string;
+    about: { en: string; ka: string };
     id: string;
     like: number;
     isDeleted: boolean;
@@ -24,6 +25,19 @@ const Card: React.FC<CardProps> = ({
   handleDelete,
   handleRestore,
 }) => {
+  const { language } = useLanguage();
+
+  const translations = {
+    en: {
+      delete: "Delete",
+      restore: "Restore",
+    },
+    ka: {
+      delete: "წაშლა",
+      restore: "აღდგენა",
+    },
+  };
+
   const isDeleted = cardData.isDeleted;
   const cardClass = isDeleted
     ? `${style["country-card"]} ${style["deleted"]}`
@@ -53,32 +67,34 @@ const Card: React.FC<CardProps> = ({
         <div className={style["card-image"]}>
           <img
             src={`/src/assets/vineyards/${cardData.image}`}
-            alt={`vineyard in ${cardData.name}`}
+            alt={`vineyard in ${cardData.name[language]}`}
           />
         </div>
         <div className={style["card-body"]}>
           <div className={style["card-info"]}>
-            <h3>{cardData.name}</h3>
+            <h3>{cardData.name[language]}</h3>
             <div className={style["info-row"]}>
-              <span className={style["capital"]}>{cardData.capital}</span>
+              <span className={style["capital"]}>
+                {cardData.capital[language]}
+              </span>
               <span>{cardData.population}</span>
             </div>
           </div>
-          <p>{cardData.about}</p>
+          <p>{cardData.about[language]}</p>
           <div className={style["like-row"]}>
             {isDeleted ? (
               <button
                 className={style["restore-button"]}
                 onClick={handleRestoreButtonClick}
               >
-                Restore
+                {translations[language].restore}
               </button>
             ) : (
               <button
                 className={style["delete-button"]}
                 onClick={handleDeleteButtonClick}
               >
-                Delete
+                {translations[language].delete}
               </button>
             )}
             <button
